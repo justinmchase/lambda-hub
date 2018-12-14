@@ -1,0 +1,23 @@
+version: "3"
+services:
+
+  # Local S3 instance
+  s3rver:
+    image: justinmchase/s3rver
+    volumes:
+      - "$PWD/.data/s3:/app/.data"
+    ports:
+      - "4569:4569"
+    links:
+      - "hub"
+    environment:
+      SUBSCRIBE: "ObjectCreated:Put(http://subscriber:3000)"
+
+  hub:
+    build: .
+    ports:
+      - "2354:2354"
+    volumes:
+      - "./src/app:/var/app"
+      - "./src/tasks:/var/tasks"
+      - "/var/app/node_modules"
