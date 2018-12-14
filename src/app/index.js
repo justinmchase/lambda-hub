@@ -23,7 +23,9 @@ app.all('/:func/:handler', async (req, res) => {
   }
 
   try {
-    const λ = require(`/var/tasks/${func}/${file}`)
+    require.cache = {}
+    const mod = `/var/tasks/${func}/${file}`
+    const λ = require(mod)
     const fn = λ[name]
     if (!fn) return complete(new Error(`${handler} is not a valid λ function`))
 
@@ -41,14 +43,12 @@ app.all('/:func/:handler', async (req, res) => {
 const port = process.env.PORT || 2354
 app.listen(port)
 
-function exit (err, code) {
+function term (err) {
   if (err) console.error(err)
-  if (code != null) console.log(`exiting with code ${code}`)
+  app.close()
   process.exit()
 }
 
-process.on('exit', code => exit(null, code));
-process.on('SIGINT', () => exit(null))
-process.on('SIGTERM', () => exit(null))
-process.on('uncaughtException', err => exit(err))
+process.on('SIGTERM', () => term())
+process.on('uncaughtException', err => term(err))
 console.log(`now listening on host ${os.hostname()} and port ${port}`)
