@@ -1,7 +1,7 @@
 {
   "name": "lambda-hub",
   "version": "1.0.0",
-  "description": "",
+  "description": "Allows execution of lambdas from a simple rest api",
   "main": "src/index.js",
   "scripts": {
     "start": "node ."
