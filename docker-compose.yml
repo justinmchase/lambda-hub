@@ -11,7 +11,7 @@ services:
     links:
       - "hub"
     environment:
-      SUBSCRIBE: "ObjectCreated:Put(http://subscriber:3000)"
+      SUBSCRIBE: "example:ObjectCreated:Put(http://subscriber:3000/example/index.handler)"
 
   hub:
     build: .

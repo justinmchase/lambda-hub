@@ -31,7 +31,7 @@ app.all('/:func/:handler', async (req, res) => {
 
     const context = {}
     const promise = fn(req.body, context, complete)
-    if (promise) {
+    if (promise && promise.then) {
       promise
         .then(res => complete(null, res))
         .catch(err => complete(err))
