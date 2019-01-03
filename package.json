@@ -1,0 +1,12 @@
+{
+  "name": "lambda-hub",
+  "version": "1.0.1",
+  "description": "",
+  "main": "",
+  "keywords": [],
+  "author": "Justin Chase <justin.m.chase@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "2.382.0"
+  }
+}
