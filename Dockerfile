@@ -1,4 +1,4 @@
-FROM node:8.10
+FROM node:12
 
 WORKDIR /var
 COPY package.json package-lock.json /var/
