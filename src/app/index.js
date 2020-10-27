@@ -51,4 +51,5 @@ function term (err) {
 
 process.on('SIGTERM', () => term())
 process.on('uncaughtException', err => term(err))
+console.log(`node version: ${process.versions.node}`)
 console.log(`now listening on host ${os.hostname()} and port ${port}`)
