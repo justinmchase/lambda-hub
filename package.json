@@ -7,6 +7,6 @@
   "author": "Justin Chase <justin.m.chase@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "2.779.0"
+    "aws-sdk": "2.814.0"
   }
 }
